@@ -22,6 +22,15 @@ return new class extends Migration
             $table->char('name', 100)->nullable();
             $table->boolean('free')->default(true);
             $table->integer('popularite')->default(0);
+            $table->integer('nbrsiege')->default(0);
+            $table->integer('nbrroue')->default(0);
+
+            $table->decimal('width',5,5)->default(0);
+            $table->decimal('length',5,5)->default(0);
+            $table->decimal('height',5,5)->default(0);
+            $table->decimal('prix',5,5)->default(0);
+            $table->decimal('consombyhr',5,5)->default(0);
+
             $table->dateTime('token_at', $precision = 0)->nullable();
             $table->time('duration')->default("00:00:00");
             $table->dateTime('free_at', $precision = 0)->nullable();
