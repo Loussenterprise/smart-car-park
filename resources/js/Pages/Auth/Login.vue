@@ -30,14 +30,20 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </Link>
-
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+            <div class="flex items-center mt-4 w-full justify-between">
+                <jet-button class="mr-4 justify-start bg-slate-500" @click="register">
+                    Register
                 </jet-button>
+
+                <div class=" justify-end">
+                    <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                        Forgot your password?
+                    </Link>
+
+                    <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        Log in
+                    </jet-button>
+                </div>
             </div>
         </form>
     </jet-authentication-card>
@@ -92,6 +98,9 @@
                     .post(this.route('login'), {
                         onFinish: () => this.form.reset('password'),
                     })
+            },
+            register() {
+                this.$inertia.get(route('register'));
             }
         }
     })
