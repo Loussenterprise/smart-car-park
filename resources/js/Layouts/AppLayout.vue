@@ -1,11 +1,11 @@
 <template>
     <div>
         <Head :title="title" />
-
+        
         <jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+            <nav class="bg-white border-b fixed border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -31,7 +31,9 @@
                                 </jet-nav-link>
                             </div>
                         </div>
-
+                        <div class="justify-end w-full items-center ">
+                            <search-input route-name="dashboard" ></search-input>
+                        </div>
                         <div v-if="$page.props.user"  class="hidden sm:flex sm:items-center sm:ml-6">
                             
                             <!-- Settings Dropdown -->
@@ -80,7 +82,7 @@
                             </div>
                         </div>
                         <div v-else  class="-mr-2 flex items-right">
-                            <button class="my-3 bg-slate-600 text-slate-50 rounded">
+                            <button class="my-3 bg-slate-600 text-slate-50 rounded w-20">
                                     <span class="mx-2 centered" @click="login">
                                         LOG IN
                                     </span>
@@ -166,6 +168,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink.vue'
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
+    import SearchInput from '@/Components/SearchInput.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
 
     export default defineComponent({
@@ -181,6 +184,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            SearchInput,
             Link,
         },
 
