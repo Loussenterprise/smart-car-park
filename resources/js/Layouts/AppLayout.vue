@@ -5,7 +5,7 @@
         <jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b fixed border-gray-100">
+            <nav class="bg-white border-b fixed top-0 left-0 right-0 z-50 border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -81,11 +81,9 @@
                                 </jet-dropdown>
                             </div>
                         </div>
-                        <div v-else  class="-mr-2 flex items-right">
+                        <div v-else  class="mr-2 flex items-center">
                             <button class="my-3 bg-slate-600 text-slate-50 rounded w-20">
-                                    <span class="mx-2 centered" @click="login">
-                                        LOG IN
-                                    </span>
+                                    <a :href="route('login')" class="m-2 centered">LOG IN</a>
                             </button>
                         </div>
 
@@ -145,16 +143,21 @@
             </nav>
 
         <jet-banner />
-            <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
-                    <slot name="header"></slot>
-                </div>
-            </header>
+            
+                
 
             <!-- Page Content -->
-            <main>
-                <slot></slot>
+            <main class="pt-16 pb-8 min-h-screen box-border">
+                <!-- Page Heading -->
+                <div class="bg-white shadow" v-if="$slots.header">
+                    <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
+                        <slot name="header"></slot>
+                    </div>
+                </div>
+                <div class="sm:mx-2 md:mx-4 lg:mx-6 xl:mx-8 min-h-full">
+                    <slot></slot>
+                </div>
+                
             </main>
         </div>
     </div>
@@ -207,9 +210,6 @@
                 this.$inertia.post(route('logout'));
             },
 
-            login() {
-                this.$inertia.get(route('login'));
-            },
         }
     })
 </script>
