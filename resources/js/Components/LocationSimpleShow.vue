@@ -19,9 +19,9 @@
                         </div>
                     </div>
                         <div class="align-middle">
-                            <div v-if="location.car.free">
+                            <!-- <div v-if="location.car.free">
                                 <button class="rounded bg-slate-800 text-white p-3 text-lg" @click="rent">Reserver</button>
-                            </div>
+                            </div> -->
                             <div  v-if="!location.closed">
                                 <button class="rounded bg-slate-800 text-white p-3 text-lg" @click="rendre">Rendre</button>
                             </div>

@@ -53,7 +53,7 @@
                                 <location-simple-show :location="location" />
                             </div>
                         </div>
-                        <div class="mt-12 font-bold text-2xl">Locations cloture</div>
+                        <div class="mt-12 font-bold text-2xl">Locations cloturés</div>
                         <div v-for="location in locations" v-bind:key="location.id">
                             <div v-if="location.closed==1"  class="p-3">
                                 <location-simple-show :location="location" />

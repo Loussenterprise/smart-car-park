@@ -41,18 +41,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         'locations'=>Location::where('user_id',$id)->orderBy('updated_at','desc')->with('car')->with('user')->get(),
     ]);
 })->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified', 'auth'])->get('/dashboard/users', function () {
+Route::middleware(['admin'])->get('/dashboard/users', function () {
     return Inertia::render('Dashboard/Users',[
         'users'=>User::all(),
     ]);
 })->name('dashboard.users');
-Route::middleware(['auth:sanctum', 'verified', 'auth'])->get('/dashboard/cars', function () {
+Route::middleware(['admin'])->get('/dashboard/cars', function () {
     return Inertia::render('Dashboard/Cars',[
         'cars'=>Car::all(),
     ]);
 })->name('dashboard.cars');
 
-Route::middleware(['auth:sanctum', 'verified', 'auth'])->get('/dashboard/locations', function () {
+Route::middleware(['admin'])->get('/dashboard/locations', function () {
     return Inertia::render('Dashboard/Locations',[
         'locations'=>Location::with('user','car')->orderBy('closed')->get(),
     ]);

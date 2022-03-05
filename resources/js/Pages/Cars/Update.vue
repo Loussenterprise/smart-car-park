@@ -92,7 +92,7 @@
                 form: this.$inertia.form({
                     id: this.car.id,
                     name: this.car.name,
-                    image: this.car.image,
+                    image: null,
                     nbrsiege: this.car.nbrsiege,
                     nbrroue: this.car.nbrroue,
                     width: this.car.width,

@@ -25,7 +25,7 @@ class CarController extends Controller
     public function show(int $id=0){
         $car=Car::find($id);
         if($car==null){
-            return redirect()->back();
+            return redirect()->route('welcome');
         }
         return Inertia::render('Cars/Show',[
             'car'=>$car,
@@ -36,7 +36,7 @@ class CarController extends Controller
     public function delete(int $id=0){
         $car=Car::find($id);
         $car->delete();
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->back();
     }
 
     public function showCar(Car $car=null,Request $r){
@@ -92,6 +92,11 @@ class CarController extends Controller
         $car->height=$request->height;
         $car->prix=$request->prix;
         $car->consombyhr=$request->consombyhr;
+        if($request->hasfile('image')) {
+            $file_name = time().'.car_'.$car->id.'.'.$request->file('image')->getClientOriginalName();
+            $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
+            $car->image = asset('storage/' . $file_path);
+        }
         $car->save();
         return redirect()->route('car.show',['id'=>$car->id]);
     }
