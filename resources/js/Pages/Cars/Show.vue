@@ -7,7 +7,9 @@
             <div class="sm:w-1/4 w-2/5 h-full  justify-left items-left align-middle rounded">
 
                 <div class="w-fuhh box-border h-full text-center cursor-pointer"  @click="show">
-                    <img :src="car.image" alt="" class="w-full h-full">
+                    <Link :href="car.image" target="_blank"  >
+                        <img :src="car.image" alt="" class="w-full h-full">
+                    </Link>
                 </div> 
             </div>
             <div class="sm:w-1/2 sm:p-5 p-3 w-3/5 h-full   justify-left items-left align-middle rounded ">
